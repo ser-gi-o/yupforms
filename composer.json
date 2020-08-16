@@ -1,0 +1,25 @@
+{
+    "name": "srg/yupforms",
+    "description": "Flexible and reliable form collection (contact, feedback, subscribe, etc..)",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergio",
+            "email": "sergio@yuphub.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "YupForms\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "YupForms\\YupFormsServiceProvider"
+            ]
+        }
+    }
+}
