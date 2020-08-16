@@ -8,14 +8,14 @@ frontend framework or amount of fields in form.
 `composer require srg\yupforms`
 
 #### Database
-`php artisan yupforms:migrate`
+`php artisan migrate`
 
 ## Admin
 YupForms Admin comes with CRUD functionality for forms(YupForm) and form submissions (YupFormData).
 The admin frontend was built with bootstrap, jquery and datatables.net.
 
 #### Route
-Yupforms route /yupforms
+Yupforms route /yupforms/yupform
 
 
 #### Events

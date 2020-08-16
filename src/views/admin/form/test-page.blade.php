@@ -33,14 +33,4 @@
         @endif
     @endif
 
-    <h3>test next</h3>
-    <form action="https://dp.mailflagger.com/yupform/2732873" id="2732873form" method="POST">
-        <label>Email</label>
-        <input type="email" name="email" required>
-        <label>Message</label>
-        <input type="text" name="message">
-        <input type="hidden" name="_next" value="https://yuphub.com?mailflagger=hello">
-        <button type="submit">Submit</button>
-    </form>
-
 @endsection

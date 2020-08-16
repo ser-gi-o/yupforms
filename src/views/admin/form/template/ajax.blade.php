@@ -2,7 +2,7 @@
 $formId = $publicId . 'form';
 $formMessageId = $publicId . 'form-message';
 ?>
-<form action="https://dp.mailflagger.com/yupform/{{ $publicId }}" id="{{ $formId }}" method="POST">
+<form action="{{ action('\YupForms\Http\YupFormController@submit', ['publicId' => $publicId]) }}" id="{{ $formId }}" method="POST">
     <label>Email</label>
     <input type="email" name="email" required>
     <label>Message</label>
