@@ -4,7 +4,7 @@
 Route::get('yupform/thank-you', 'YupForms\Http\YupFormController@submitNext');
 Route::post('yupform/{publicId}', 'YupForms\Http\YupFormController@submit');
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('yupforms/test/{publicId}', 'YupForms\Http\YupFormController@testPage');
     Route::get('yupforms/form-list', 'YupForms\Http\YupFormController@formIndexList');
     Route::get('yupforms/yupform/{yupform}/download-csv', 'YupForms\Http\YupFormController@downloadCsv');
