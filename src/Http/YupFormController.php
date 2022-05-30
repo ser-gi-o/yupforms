@@ -239,7 +239,9 @@ class YupFormController extends BaseController
         } else {
             //check form restrictions
             if (!$yupForm->isActive()) {
+                $response['message'] = "Not Found ($publicId)";
                 $note = "Inactive ($publicId)";
+                event(new YupFormSubmissionRejected($formData, $serverData, $response['message']));
 
             } elseif ($yupForm->hasHost()) {
                 //$requestHost = request()->headers->get('origin')
@@ -247,20 +249,21 @@ class YupFormController extends BaseController
 
                 if (!$yupForm->isValidHost($requestHost)) {
                     $note = 'Invalid Host: ' . $requestHost;
+                    $response['message'] = "Not Found ($publicId)";
+                    event(new YupFormSubmissionRejected($formData, $serverData, $response['message']));
                 }
             } else {
                 $response['error'] = 0;
+                $response['code'] = 200;
+
+                $yupFormData = $yupForm->storeSubmission(
+                    $formData,
+                    $serverData,
+                    $response['error'],
+                    $note
+                );
+                event(new YupFormSubmissionAccepted($yupFormData));
             }
-
-            $response['code'] = 200;
-
-            $yupFormData = $yupForm->storeSubmission(
-                $formData,
-                $serverData,
-                $response['error'],
-                $note
-            );
-            event(new YupFormSubmissionAccepted($yupFormData));
         }
 
         if ($ajaxRequest) {
